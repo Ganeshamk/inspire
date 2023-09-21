@@ -84,8 +84,10 @@ export class AuthorInfoComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.authorInformation.books.push(result);
-      this.sortBook(this.sortType);
+      if(result) {
+        this.authorInformation.books.push(result);
+        this.sortBook(this.sortType);
+      }
     });
   }
 
