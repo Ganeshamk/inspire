@@ -1,0 +1,132 @@
+.author-block {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background: #d1b6b6;
+    padding: 20px;
+
+    .author-info {
+        padding: 10px;
+        font-size: 20px;
+        font-weight: 400;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        label {
+            display: flex;
+        align-items: center;
+        gap: 10px;
+        }
+    }
+
+    .author-image {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+
+.books-block {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    overflow: auto;
+    height: 500px;
+
+    .book-card-layout {
+        width: 20%;
+        padding: 10px;
+    }
+
+    .image-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #dfeaee;
+    
+        .book-img {
+            height: 260px;
+        }
+    }
+
+    @media only screen and (max-width: 576px) {
+        .book-card-layout {
+            width: 100%;
+        }
+    }
+    
+    @media only screen and (min-width: 576px) and (max-width: 768px) {
+        .book-card-layout {
+            width: 50%;
+        }
+    }
+    
+    @media only screen and (min-width: 768px) and (max-width: 992px) {
+        .book-card-layout{
+            width: 33.33%;
+        }
+    }
+
+    .book-card {
+        .title {
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 14px;
+            padding: 10px 0;
+        }
+
+        .published-date {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .title {
+            a {
+                text-decoration: none;
+            }
+        }
+
+        .actions {
+            justify-content: flex-end;
+        }
+
+        &:hover {
+            box-shadow: 0 8px 8px 8px rgba(0,0,0,.2), 0 8px 8px 0 rgba(0,0,0,.14), 0 8px 8px 0 rgba(0,0,0,.12) !important;
+            transform: translate3d(0,0,0);
+            transition: background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);
+        }
+    }
+
+    .no-books {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        font-size: 18px;
+        color: #e4acac;
+    }
+}
+
+.books-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+    gap: 5px;
+
+    .sort-type, .sort-type:focus {
+        border: none;
+        outline: none;
+    }
+}
+
+
+
+
+
+
+

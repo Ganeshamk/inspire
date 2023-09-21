@@ -1,0 +1,6 @@
+<h1 mat-dialog-title>{{constants?.title}</h1>
+<div mat-dialog-content>{{constants.message}} <strong>{{book.title}}?</strong></div>
+<div class="actions" mat-dialog-actions>
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" cdkFocusInitial (click)="delete()">Delete</button>
+</div>

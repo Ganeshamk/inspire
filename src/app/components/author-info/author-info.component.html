@@ -1,0 +1,69 @@
+<div class="author-block">
+  <div class="author-image">
+    <img src="../../../assets/images/download.jpeg" alt="author" />
+  </div>
+  <div class="author-info">
+    <div class="author-name">
+      <label>
+        <mat-icon>person</mat-icon> {{authorInformation?.author}}
+      </label>
+    </div>
+
+    <div class="author-birthday">
+      <label>
+        <mat-icon>date_range</mat-icon> {{authorInformation?.birthday}}
+      </label>
+    </div>
+
+    <div class="author-birthplace">
+      <label>
+        <mat-icon> place</mat-icon> {{authorInformation?.birthPlace}}
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="books-header">
+  <button mat-icon-button color="primary" [matTooltip]="sortOrder =='asc' ? 'Ascending' : 'Descending'" (click)="sortBook(sortType)">
+    <mat-icon>{{sortOrder =='asc' ? 'arrow_upward' : 'arrow_downward'}}</mat-icon>
+  </button>
+
+  <select class="sort-type" (change)="selectedSortType($event)">
+    <option value="title" selected>Title</option>
+    <option value="PublishDate">PublishDate</option>
+  </select>
+
+  <button mat-raised-button color="primary" (click)="openCreateBookDialog()">
+    <mat-icon>book</mat-icon> {{constants.addNewBook}}
+  </button>
+</div>
+
+<div class="books-block">
+  <ng-container *ngFor="let book of authorInformation?.books; let index = index">
+    <div class="book-card-layout">
+      <mat-card class="book-card">
+        <div class="image-block">
+          <img mat-card-image class="book-img" src="{{book?.imageUrl}}" alt="book" />
+        </div>
+        <mat-card-content>
+          <p class="title" [matTooltip]="book?.title"><a href="{{book?.purchaseLink}}" target="_blank">{{book?.title}}</a></p>
+          <p class="published-date">
+            <mat-icon>date_range</mat-icon> {{book?.PublishDate}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions class="actions">
+          <button mat-icon-button (click)="openConfirmationDialog(book)">
+            <mat-icon color="primary">delete</mat-icon>
+          </button>
+          <button mat-icon-button (click)="openEditBookDialog(book, index)">
+            <mat-icon color="primary">edit</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </ng-container>
+
+  <div class="no-books" *ngIf="authorInformation?.books?.length == 0">
+    <label>{{constants.noBooks}}</label>
+  </div>
+</div>

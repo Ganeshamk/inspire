@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>{{constants.title}}</h1>
+
+<form [formGroup]="bookForm" class="book-form">
+  <mat-form-field class="text-field">
+    <mat-label>{{constants.bookTitleLabel}}</mat-label>
+    <input matInput placeholder="{{constants.bookTitleLabel}}" formControlName="title" />
+    <mat-error *ngIf="bookForm.controls['title'].hasError('required')">
+        {{constants.bookTitleLabel}} {{constants.required}}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="text-field">
+    <mat-label>{{constants.bookImageUrlLabel}}</mat-label>
+    <input matInput placeholder="{{constants.bookImageUrlLabel}}" formControlName="imageUrl" />
+    <mat-error *ngIf="bookForm.controls['imageUrl'].hasError('required')">
+      {{constants.bookImageUrlLabel}} {{constants.required}}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="text-field">
+    <mat-label>{{constants.purchaseLinkLabel}}</mat-label>
+    <input matInput placeholder="{{constants.purchaseLinkLabel}}" formControlName="purchaseLink" />
+    <mat-error *ngIf="bookForm.controls['purchaseLink'].hasError('required')">
+      {{constants.purchaseLinkLabel}} {{constants.required}}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="text-field">
+    <mat-label>{{constants.publishDateLabel}}</mat-label>
+    <input matInput placeholder="{{constants.publishDateLabel}}" formControlName="PublishDate"/>
+    <mat-error *ngIf="bookForm.controls['PublishDate'].hasError('required')">
+      {{constants.publishDateLabel}} {{constants.required}}
+    </mat-error>
+  </mat-form-field>
+</form>
+
+<div class="actions" mat-dialog-actions>
+  <button mat-raised-button (click)="closeDailog()">Cancel</button>
+  <button mat-raised-button color="primary" cdkFocusInitial (click)="saveBookInformation()" [disabled]="bookForm.invalid">Save</button>
+</div>
